@@ -10,7 +10,7 @@ namespace CarServise.Models
     {
         public string CompanyName { get; set; }
         public string OkpoName { get; set; }
-        public string Sity{ get; set; }
+        public string Sity { get; set; }
         public DateTime MemberSince { get; set; }
     }
 }
