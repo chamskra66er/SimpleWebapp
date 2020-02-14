@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarServise.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200214061816_Initial model")]
-    partial class Initialmodel
+    [Migration("20200214185239_initial models")]
+    partial class initialmodels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,8 @@ namespace CarServise.Data.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("FileUrl");
+
+                    b.Property<DateTime>("TimeCreate");
 
                     b.Property<string>("Title");
 

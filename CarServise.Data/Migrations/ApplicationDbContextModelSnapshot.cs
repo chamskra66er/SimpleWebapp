@@ -31,6 +31,8 @@ namespace CarServise.Data.Migrations
 
                     b.Property<string>("FileUrl");
 
+                    b.Property<DateTime>("TimeCreate");
+
                     b.Property<string>("Title");
 
                     b.Property<string>("Value");

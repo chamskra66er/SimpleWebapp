@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarServise.Data.Migrations
 {
-    public partial class Initialmodel : Migration
+    public partial class initialmodels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,8 @@ namespace CarServise.Data.Migrations
                     VideoUrl = table.Column<string>(nullable: true),
                     FileUrl = table.Column<string>(nullable: true),
                     Value = table.Column<string>(nullable: true),
-                    Comment = table.Column<string>(nullable: true)
+                    Comment = table.Column<string>(nullable: true),
+                    TimeCreate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

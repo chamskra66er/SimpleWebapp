@@ -23,7 +23,8 @@ namespace CarServise.Controllers
                 {
                     Id=forum.Id,
                     Name=forum.Title,
-                    Value = forum.Value
+                    Value = forum.Value,
+                    ImgUrl = forum.ImageUrl
                 });
             var model = new ForumIndexModel
             {

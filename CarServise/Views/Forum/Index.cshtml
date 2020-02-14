@@ -1,3 +1,16 @@
 ﻿@model CarServise.Models.ForumViewModels.ForumIndexModel
 
-<h3>TODO ForumIndexModel</h3>
+<h3>Forums</h3>
+<table class="table table-hover">
+    @foreach (var forum in Model.ForumList)
+    {
+        <tr>
+            <td>
+                @forum.ImgUrl
+                @forum.Name
+                @forum.Value
+            </td>
+        </tr>
+    }
+
+</table>
