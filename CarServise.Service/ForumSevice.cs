@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarServise.Service
 {
-    public class ForumSevise : IForum
+    public class ForumSevice : IForum
     {
         private readonly ApplicationDbContext _context;
-        public ForumSevise(ApplicationDbContext context)
+        public ForumSevice(ApplicationDbContext context)
         {
             _context = context;
         }

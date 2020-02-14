@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CarServise.Data;
 using CarServise.Models;
 using CarServise.Services;
+using CarServise.Service;
 
 namespace CarServise
 {
@@ -35,6 +36,8 @@ namespace CarServise
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<IForum, ForumSevice>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddMvc();
         }
