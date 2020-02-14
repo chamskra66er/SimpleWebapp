@@ -10,10 +10,10 @@ namespace CarServise.Data.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }       
-        public IEnumerable<Image> ImageUrl { get; set; }
         public string VideoUrl { get; set; }
         public string FileUrl { get; set; }
         public string Value { get; set; }
         public string Comment { get; set;}
+        public IEnumerable<Image> ImageUrl { get; set; }
     }
 }

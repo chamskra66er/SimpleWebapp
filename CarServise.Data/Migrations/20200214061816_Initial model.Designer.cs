@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarServise.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200213180545_initial model")]
-    partial class initialmodel
+    [Migration("20200214061816_Initial model")]
+    partial class Initialmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,11 +68,15 @@ namespace CarServise.Data.Migrations
 
                     b.Property<string>("ImgUrl8");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ForumId");
 
-                    b.ToTable("Image");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("CarServise.Models.ApplicationUser", b =>
@@ -249,6 +253,10 @@ namespace CarServise.Data.Migrations
                     b.HasOne("CarServise.Data.Models.Forum")
                         .WithMany("ImageUrl")
                         .HasForeignKey("ForumId");
+
+                    b.HasOne("CarServise.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

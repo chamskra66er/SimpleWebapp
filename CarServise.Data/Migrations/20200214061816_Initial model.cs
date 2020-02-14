@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarServise.Data.Migrations
 {
-    public partial class initialmodel : Migration
+    public partial class Initialmodel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -176,11 +176,12 @@ namespace CarServise.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
                     ImgUrl1 = table.Column<string>(nullable: true),
                     ImgUrl2 = table.Column<string>(nullable: true),
                     ImgUrl3 = table.Column<string>(nullable: true),
@@ -193,11 +194,17 @@ namespace CarServise.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Image_Forums_ForumId",
+                        name: "FK_Images_Forums_ForumId",
                         column: x => x.ForumId,
                         principalTable: "Forums",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Images_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -242,9 +249,14 @@ namespace CarServise.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_ForumId",
-                table: "Image",
+                name: "IX_Images_ForumId",
+                table: "Images",
                 column: "ForumId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_UserId",
+                table: "Images",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -265,16 +277,16 @@ namespace CarServise.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Forums");
 
             migrationBuilder.DropTable(
-                name: "Forums");
+                name: "AspNetUsers");
         }
     }
 }
