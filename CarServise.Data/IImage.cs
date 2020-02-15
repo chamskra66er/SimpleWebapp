@@ -10,6 +10,7 @@ namespace CarServise.Data
     {
         Image GetById(int id);
         IEnumerable<Image> GetAll();
+        IEnumerable<Image> GetImagesByForm(int id);
         Task Add(Image image);
         Task Delete(int id);
     }

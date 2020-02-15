@@ -12,6 +12,7 @@ namespace CarServise.Controllers
     public class ForumController:Controller
     {
         private readonly IForum _forumService;
+        private readonly IImage _imageService;
         public ForumController(IForum forumService)
         {
             _forumService = forumService;
@@ -36,7 +37,21 @@ namespace CarServise.Controllers
         public IActionResult Detail(int id)
         {
             var forum = _forumService.GetById(id);
-            return View();
+            var images = _imageService.GetImagesByForm(id);
+            var postListing = images.Select(p => new Image
+            {
+                Id = p.Id,
+                User=p.User,
+                UserId=p.User.Id,
+                ImgUrl=p.ImgUrl
+
+            });
+            var model = new
+            {
+                postListing,
+                forum
+            };
+            return View(model);
         }
 
     }

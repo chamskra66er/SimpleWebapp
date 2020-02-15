@@ -6,7 +6,7 @@
     {
         <tr>
             <td>
-                <div> @forum.ImgUrl</div>
+                <div style="background-image: url(@forum.ImgUrl)"></div>
                 <div>Имя: @forum.Name</div>
                 <div>Цена за работу: @forum.Value</div>
                 <a asp-controller="Forum" asp-action="Detail" asp-route-id="forum.Id" class="btn btn-primary btn-sm">
