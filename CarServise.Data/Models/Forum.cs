@@ -14,8 +14,8 @@ namespace CarServise.Data.Models
         public string FileUrl { get; set; }
         public string Value { get; set; }
         public string Comment { get; set;}
-        public DateTime TimeCreate { get; set; }
-        public DateTime TimeFinish { get; set; }
+        public DateTime DateCreate { get; set; }
+        public DateTime DateFinish { get; set; }
         public IEnumerable<Image> ImageUrl { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarServise.Data.Migrations
 {
-    public partial class initialmodels : Migration
+    public partial class Initialmodels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +63,8 @@ namespace CarServise.Data.Migrations
                     FileUrl = table.Column<string>(nullable: true),
                     Value = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(nullable: true),
-                    TimeCreate = table.Column<DateTime>(nullable: false)
+                    DateCreate = table.Column<DateTime>(nullable: false),
+                    DateFinish = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,14 +184,7 @@ namespace CarServise.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true),
-                    ImgUrl1 = table.Column<string>(nullable: true),
-                    ImgUrl2 = table.Column<string>(nullable: true),
-                    ImgUrl3 = table.Column<string>(nullable: true),
-                    ImgUrl4 = table.Column<string>(nullable: true),
-                    ImgUrl5 = table.Column<string>(nullable: true),
-                    ImgUrl6 = table.Column<string>(nullable: true),
-                    ImgUrl7 = table.Column<string>(nullable: true),
-                    ImgUrl8 = table.Column<string>(nullable: true),
+                    ImgUrl = table.Column<string>(nullable: true),
                     ForumId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

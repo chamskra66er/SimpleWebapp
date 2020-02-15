@@ -27,13 +27,13 @@ namespace CarServise.Data.Migrations
 
                     b.Property<string>("Comment");
 
+                    b.Property<DateTime>("DateCreate");
+
+                    b.Property<DateTime>("DateFinish");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("FileUrl");
-
-                    b.Property<DateTime>("TimeCreate");
-
-                    b.Property<DateTime>("TimeFinish");
 
                     b.Property<string>("Title");
 
@@ -54,21 +54,7 @@ namespace CarServise.Data.Migrations
 
                     b.Property<int?>("ForumId");
 
-                    b.Property<string>("ImgUrl1");
-
-                    b.Property<string>("ImgUrl2");
-
-                    b.Property<string>("ImgUrl3");
-
-                    b.Property<string>("ImgUrl4");
-
-                    b.Property<string>("ImgUrl5");
-
-                    b.Property<string>("ImgUrl6");
-
-                    b.Property<string>("ImgUrl7");
-
-                    b.Property<string>("ImgUrl8");
+                    b.Property<string>("ImgUrl");
 
                     b.Property<string>("UserId");
 
