@@ -36,7 +36,7 @@ namespace CarServise.Controllers
         public IActionResult Detail(int id)
         {
             var forum = _forumService.GetById(id);
-
+            return View();
         }
 
     }
