@@ -6,9 +6,12 @@
     {
         <tr>
             <td>
-                @forum.ImgUrl
-                @forum.Name
-                @forum.Value
+                <div> @forum.ImgUrl</div>
+                <div>Имя: @forum.Name</div>
+                <div>Цена за работу: @forum.Value</div>
+                <a asp-controller="Forum" asp-action="Detail" asp-route-id="forum.Id" class="btn btn-primary btn-sm">
+                    Расчитать
+                </a>
             </td>
         </tr>
     }
