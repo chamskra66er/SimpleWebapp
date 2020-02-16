@@ -13,6 +13,8 @@ using Microsoft.Extensions.Options;
 using CarServise.Models;
 using CarServise.Models.AccountViewModels;
 using CarServise.Services;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CarServise.Controllers
 {
@@ -24,17 +26,20 @@ namespace CarServise.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IHostingEnvironment _hosting;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IHostingEnvironment hosting)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _hosting = hosting;
         }
 
         [TempData]
@@ -242,6 +247,9 @@ namespace CarServise.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
+
+                    Directory.CreateDirectory(_hosting.WebRootPath+$"\\images\\forum\\{user.UserName}");
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);

@@ -9,7 +9,7 @@ using CarServise.Models.ForumViewModels;
 
 namespace CarServise.Controllers
 {
-    public class ForumController:Controller
+    public class ForumController : Controller
     {
         private readonly IForum _forumService;
         public ForumController(IForum forumService)
@@ -19,10 +19,10 @@ namespace CarServise.Controllers
         public IActionResult Index()
         {
             var forums = _forumService.GeyAll()
-                .Select(forum=> new ForumListingModel
+                .Select(forum => new ForumListingModel
                 {
-                    Id=forum.Id,
-                    Name=forum.Title,
+                    Id = forum.Id,
+                    Name = forum.Title,
                     Value = forum.Value,
                     ImgUrl = forum.ImageUrl
                 });
@@ -44,6 +44,10 @@ namespace CarServise.Controllers
                 forum.FileUrl,
             };
             return View(model);
+        }
+        public IActionResult Create()
+        {
+            return View();
         }
 
     }
