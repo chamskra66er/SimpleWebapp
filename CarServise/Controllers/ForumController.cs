@@ -13,9 +13,10 @@ namespace CarServise.Controllers
     {
         private readonly IForum _forumService;
         private readonly IImage _imageService;
-        public ForumController(IForum forumService)
+        public ForumController(IForum forumService, IImage imageSrvice)
         {
             _forumService = forumService;
+            _imageService = imageSrvice;
         }
         public IActionResult Index()
         {
@@ -49,7 +50,10 @@ namespace CarServise.Controllers
             var model = new
             {
                 postListing,
-                forum
+                forum.Title,
+                forum.Description,
+                forum.VideoUrl,
+                forum.FileUrl,
             };
             return View(model);
         }

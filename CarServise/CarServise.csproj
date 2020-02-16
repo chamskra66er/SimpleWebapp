@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-CarServise-EEFDAF1B-A3B7-4B7A-B086-30B934E4C3C5</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\forum\0001\**" />
+    <Content Remove="wwwroot\images\forum\0001\**" />
+    <EmbeddedResource Remove="wwwroot\images\forum\0001\**" />
+    <None Remove="wwwroot\images\forum\0001\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

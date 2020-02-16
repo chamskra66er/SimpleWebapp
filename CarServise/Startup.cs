@@ -37,6 +37,7 @@ namespace CarServise
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumSevice>();
+            services.AddScoped<IImage, ImageService>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
 
             services.AddMvc();
