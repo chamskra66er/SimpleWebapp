@@ -220,7 +220,17 @@ namespace CarServise.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    CompanyName = model.CompanyName,
+                    OkpoName = model.OkpoName,
+                    PhoneNumber = model.PhoneNumber,
+                    FIO = model.FIO,
+                    Sity = model.Sity,
+                    MemberSince = DateTime.Now
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

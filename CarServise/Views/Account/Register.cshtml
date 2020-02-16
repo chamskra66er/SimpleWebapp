@@ -12,6 +12,30 @@
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="CompanyName">Наименование компании</label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OkpoName">ОКПО</label>
+                <input asp-for="OkpoName" class="form-control" />
+                <span asp-validation-for="OkpoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber">Телефон</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sity">Город</label>
+                <input asp-for="Sity" class="form-control" />
+                <span asp-validation-for="Sity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FIO">ФИО</label>
+                <input asp-for="FIO" class="form-control" />
+            </div>
+            <div class="form-group">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>

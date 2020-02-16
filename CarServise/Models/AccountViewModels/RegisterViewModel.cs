@@ -11,16 +11,24 @@ namespace CarServise.Models.AccountViewModels
         [Required]
         [Display(Name = "CompanyName")]
         public string CompanyName { get; set; }
+
+        [Required]
+        [Display(Name = "OkpoName")]
+        [StringLength(100, ErrorMessage = "The {0} must be at max {1} characters long.")]
+        public string OkpoName { get; set; }
+
         [Required]
         [Display(Name = "PhoneNumber")]
         [StringLength(11, ErrorMessage = "Номер должен содежать одиннадцать цифер", MinimumLength =11)]
         public string PhoneNumber { get; set; }
+
         [Required]
         [Display(Name = "Sity")]
         public string Sity { get; set; }
+
         [Required]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        [Display(Name = "FIO")]
+        public string FIO { get; set; }
         //-----------------------
 
         [Required]
