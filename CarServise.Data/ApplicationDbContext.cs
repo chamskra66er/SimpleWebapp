@@ -11,7 +11,6 @@ namespace CarServise.Data
             : base(options){}
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Forum> Forums { get; set; }
-        public DbSet<Image> Images { get; set; }
 
     }
 }

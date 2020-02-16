@@ -28,13 +28,13 @@ namespace CarServise.Service
         public Forum GetById(int id)
         {
             var forum = _context.Forums.Where(f => f.Id == id)
-                .Include(f=>f.ImageUrl).ThenInclude(p=>p.User)
                 .FirstOrDefault();
             return forum;
         }
 
-        public IEnumerable<Forum> GeyAll() => 
-            _context.Forums.Include(f => f.ImageUrl);
+        public IEnumerable<Forum> GeyAll() =>
+            _context.Forums;
+        //.Include(f => f.ImageUrl);
 
 
         public Task UpdateForumDescription(int forumId, string newDescription)

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarServise.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200215104348_Initial models")]
-    partial class Initialmodels
+    [Migration("20200216093557_Initial model")]
+    partial class Initialmodel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,12 @@ namespace CarServise.Data.Migrations
 
                     b.Property<string>("FileUrl");
 
+                    b.Property<int>("ImageCount");
+
+                    b.Property<string>("ImageUrl");
+
+                    b.Property<string>("Path");
+
                     b.Property<string>("Title");
 
                     b.Property<string>("Value");
@@ -46,27 +52,6 @@ namespace CarServise.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Forums");
-                });
-
-            modelBuilder.Entity("CarServise.Data.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ForumId");
-
-                    b.Property<string>("ImgUrl");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ForumId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("CarServise.Models.ApplicationUser", b =>
@@ -236,17 +221,6 @@ namespace CarServise.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CarServise.Data.Models.Image", b =>
-                {
-                    b.HasOne("CarServise.Data.Models.Forum")
-                        .WithMany("ImageUrl")
-                        .HasForeignKey("ForumId");
-
-                    b.HasOne("CarServise.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

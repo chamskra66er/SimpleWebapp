@@ -9,6 +9,21 @@ namespace CarServise.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "CompanyName")]
+        public string CompanyName { get; set; }
+        [Required]
+        [Display(Name = "PhoneNumber")]
+        [StringLength(11, ErrorMessage = "Номер должен содежать одиннадцать цифер", MinimumLength =11)]
+        public string PhoneNumber { get; set; }
+        [Required]
+        [Display(Name = "Sity")]
+        public string Sity { get; set; }
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+        //-----------------------
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

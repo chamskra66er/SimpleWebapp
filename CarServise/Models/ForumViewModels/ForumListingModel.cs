@@ -11,6 +11,6 @@ namespace CarServise.Models.ForumViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
-        public IEnumerable<Image> ImgUrl { get; set; }
+        public string ImgUrl { get; set; }
     }
 }
