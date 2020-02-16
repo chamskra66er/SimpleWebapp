@@ -47,7 +47,8 @@ namespace CarServise.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            var model = new AddForumModel();
+            return View(model);
         }
 
     }

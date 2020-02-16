@@ -1,23 +1,26 @@
 ﻿@model CarServise.Models.ForumViewModels.ForumIndexModel
 
-<div class="container h4">
+<div class="container">
+
     <div class="col-lg-10"><h4>Index Forum</h4></div>
     <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
-    <table class="table table-hover">
+    <table class="table col-md-4">
         @foreach (var forum in Model.ForumList)
         {
             <tr>
                 <td>
-                    <div style="background-image: url(@forum.ImgUrl)">@forum.Id</div>
-                    <div>Имя: @forum.Name</div>
-                    <div>Цена за работу: @forum.Value</div>
-                    <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
-                        Расчитать
-                    </a>
-
+                    <div class="col-md-4">
+                        <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
+                        <div>Имя: @forum.Name</div>
+                        <div>Цена за работу: @forum.Value</div>
+                        <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
+                            Расчитать
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
     </table>
+
 
 </div>
