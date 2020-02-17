@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 using CarServise.Data;
 using CarServise.Data.Models;
 using CarServise.Models.ForumViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using CarServise.Models;
 
 namespace CarServise.Controllers
 {
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
-        public ForumController(IForum forumService)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ForumController(IForum forumService, UserManager<ApplicationUser> userManager)
         {
             _forumService = forumService;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -57,6 +62,13 @@ namespace CarServise.Controllers
         {
             var model = new AddForumModel();
             return View(model);
+        }
+        [Authorize]
+        [HttpPost]        
+        public IActionResult Report(ReportModel model)
+        {
+
+            return View();
         }
 
     }
