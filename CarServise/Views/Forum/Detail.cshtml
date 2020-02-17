@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@model CarServise.Models.ForumViewModels.ForumDetailModel
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+﻿@model CarServise.Models.ForumViewModels.ForumDetailModel
 
 <h3>Forum Detail</h3>
 <div class="container">
@@ -52,7 +49,7 @@
         <h4>Срок окончания: @Model.Finish</h4>
         <h4>Комментарии: @Model.Com</h4>
         <form asp-controller="Forum" asp-action="Report" method="post">
-            <input asp-for="Name" type="hidden" />
+            <input asp-for="FIO" type="hidden" />
             <input asp-for="Val" type="hidden" />
             <input asp-for="Finish" type="hidden" />
             <input asp-for="Pat" type="hidden" />

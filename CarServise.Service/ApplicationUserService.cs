@@ -2,6 +2,7 @@
 using CarServise.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,11 @@ namespace CarServise.Service
 {
     public class ApplicationUserService : IApplicationUser
     {
+        private readonly ApplicationDbContext _context;
+        public ApplicationUserService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public Task Add(ApplicationUser user)
         {
             throw new NotImplementedException();
@@ -26,7 +32,7 @@ namespace CarServise.Service
 
         public ApplicationUser GetById(string id)
         {
-            throw new NotImplementedException();
+            return _context.ApplicationUsers.FirstOrDefault(p => p.Id == id);
         }
     }
 }

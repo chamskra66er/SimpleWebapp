@@ -16,5 +16,6 @@ namespace CarServise.Models.ForumViewModels
         public DateTime Start { get; set; }
         public DateTime Finish { get; set; }
         public string Com { get; set; }
+        public string FIO { get; set; }
     }
 }

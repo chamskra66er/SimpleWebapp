@@ -42,20 +42,25 @@ namespace CarServise.Controllers
         public IActionResult Detail(int id)
         {
             var forum = _forumService.GetById(id);
+
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
+
             var model = new ForumDetailModel
             {
                 Id = forum.Id,
                 Name = forum.Title,
                 Descr = forum.Description,
                 Val = forum.Value,
-                Pat=forum.Path,
                 ImgUrl=forum.ImageUrl,
                 ImgCount = forum.ImageCount,
                 FlUrl = forum.FileUrl,
                 VidUrl = forum.VideoUrl,
                 Start = forum.DateCreate,
                 Finish = forum.DateFinish,
-                Com = forum.Comment
+                Com = forum.Comment,
+                FIO = user.FIO,
+                Pat = user.UserName
             };         
             return View(model);
         }
@@ -68,12 +73,12 @@ namespace CarServise.Controllers
         [HttpPost]        
         public IActionResult Report(ReportModel model)
         {
-            var userId = _userManager.GetUserId
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
 
-            Excel ls = new Excel();
-            ls.GetPath(model);
+            Excel ls= new Excel();
             ls.CreateNewFile(model);
-            return View();
+            return View("Detail");
         }
 
     }
