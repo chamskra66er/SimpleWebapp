@@ -12,5 +12,6 @@ namespace CarServise.Models.ForumViewModels
         public string Name { get; set; }
         public string Value { get; set; }
         public string ImgUrl { get; set; }
+
     }
 }

@@ -36,13 +36,21 @@ namespace CarServise.Controllers
         public IActionResult Detail(int id)
         {
             var forum = _forumService.GetById(id);
-            var model = new
+            var model = new ForumDetailModel
             {
-                forum.Title,
-                forum.Description,
-                forum.VideoUrl,
-                forum.FileUrl,
-            };
+                Id = forum.Id,
+                Name = forum.Title,
+                Descr = forum.Description,
+                Val = forum.Value,
+                Pat=forum.Path,
+                ImgUrl=forum.ImageUrl,
+                ImgCount = forum.ImageCount,
+                FlUrl = forum.FileUrl,
+                VidUrl = forum.VideoUrl,
+                Start = forum.DateCreate,
+                Finish = forum.DateFinish,
+                Com = forum.Comment
+            };         
             return View(model);
         }
         public IActionResult Create()
