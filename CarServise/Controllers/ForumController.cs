@@ -9,6 +9,7 @@ using CarServise.Models.ForumViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using CarServise.Models;
+using CarServise.Models.File;
 
 namespace CarServise.Controllers
 {
@@ -67,7 +68,11 @@ namespace CarServise.Controllers
         [HttpPost]        
         public IActionResult Report(ReportModel model)
         {
+            var userId = _userManager.GetUserId
 
+            Excel ls = new Excel();
+            ls.GetPath(model);
+            ls.CreateNewFile(model);
             return View();
         }
 
