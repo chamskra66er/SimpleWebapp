@@ -1,14 +1,15 @@
 ﻿using CarServise.Data;
 using CarServise.Models.ForumViewModels;
+using CarServise.Models.Search;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CarServise.Models.Search
+namespace CarServise.Controllers
 {
-    public class SearchController:Controller
+    public class SearchController : Controller
     {
         private readonly IForum _forumServise;
         public SearchController(IForum forumService)
@@ -26,12 +27,18 @@ namespace CarServise.Models.Search
                 Value = forum.Value,
                 ImgUrl = forum.ImageUrl
             });
+            var model = new SearchResultModel
+            {
+                Forums = forumListing,
+                SearchQuery = searchQuery,
+                EmptySearchResult = areNoResult
+            };
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Serach(string searchQuery)
+        public IActionResult Search(string searchQuery)
         {
-            return RedirectToAction("Result", new { searchQuery});
+            return RedirectToAction("Result", new { searchQuery });
         }
-
     }
 }

@@ -8,7 +8,7 @@ namespace CarServise.Models.Search
 {
     public class SearchResultModel
     {
-        public IEnumerable<ForumListingModel> Posts { get; set; }
+        public IEnumerable<ForumListingModel> Forums { get; set; }
         public string SearchQuery { get; set; }
         public bool EmptySearchResult { get; set; }
     }
