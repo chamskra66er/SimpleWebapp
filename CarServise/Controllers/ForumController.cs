@@ -9,7 +9,8 @@ using CarServise.Models.ForumViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using CarServise.Models;
-using CarServise.Models.File;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace CarServise.Controllers
 {
@@ -76,9 +77,20 @@ namespace CarServise.Controllers
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
 
-            Excel ls= new Excel();
-            ls.CreateNewFile(model);
-            return View("Detail");
+            XLWorkbook workbook = new XLWorkbook();
+            IXLWorksheet worksheet = workbook.Worksheets.Add("Information");
+
+            worksheet.Cell(1, 1).SetValue(model.FIO);
+            worksheet.Cell(1, 2).SetValue(model.Pat);
+            worksheet.Cell(1, 3).SetValue(model.Val);
+            worksheet.Cell(1, 4).SetValue(model.Finish);
+
+            MemoryStream MS = new MemoryStream();
+            workbook.SaveAs(MS);
+            MS.Position = 0;
+
+            return new FileStreamResult(MS, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            { FileDownloadName = $"{user.Email}.xlsx" };
         }
 
     }
