@@ -1,11 +1,21 @@
-﻿@model CarServise.Models.ForumViewModels.ForumIndexModel
+﻿@model CarServise.Models.ForumViewModels.ForumSearchQuery
 
 <div class="container">
 
-    <div class="col-lg-10"><h4>Index Forum</h4></div>
+    <div class="col-lg-5"><h4>Index Forum</h4></div>
+    <div class="col-lg-4">
+        <form asp-controller="Forum" asp-action="Search" method="post">
+            <div class="searchForm">
+                <input asp-for="SearchQuery" type="text" placeholder="Поиск..." class="searchBar">
+                <button type="submit" class="btn btnSearch">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </form>
+    </div>
     <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
     <table class="table col-md-4">
-        @foreach (var forum in Model.ForumList)
+        @foreach (var forum in Model.Forum)
         {
             <tr>
                 <td>

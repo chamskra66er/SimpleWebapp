@@ -33,13 +33,19 @@ namespace CarServise.Controllers
                     Value = forum.Value,
                     ImgUrl = forum.ImageUrl
                 });
-            var model = new ForumIndexModel
+            var model = new ForumSearchQuery
             {
-                ForumList = forums
+                Forum = forums
             };
 
             return View(model);
         }
+        [HttpPost]
+        public IActionResult Search(string searchQuery)
+        {
+            return RedirectToAction("Topic",new { searchQuery});
+        }
+
         public IActionResult Detail(int id)
         {
             var forum = _forumService.GetById(id);
