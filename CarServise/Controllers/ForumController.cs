@@ -25,7 +25,7 @@ namespace CarServise.Controllers
         }
         public IActionResult Index()
         {
-            var forums = _forumService.GeyAll()
+            var forums = _forumService.GetAll()
                 .Select(forum => new ForumListingModel
                 {
                     Id = forum.Id,
@@ -44,6 +44,23 @@ namespace CarServise.Controllers
         public IActionResult Search(string searchQuery)
         {
             return RedirectToAction("Topic",new { searchQuery});
+        }
+        public IActionResult Topic(string searchQuery)
+        {
+            var forums = new List<Forum>();
+            forums = _forumService.GetFilteredForums(searchQuery).ToList();
+            var forumListing = forums.Select(forum=> new ForumListingModel
+            {
+                Id=forum.Id,
+                Name=forum.Title,
+                Value = forum.Value,
+                ImgUrl = forum.ImageUrl
+            });
+            var model = new ForumIndexModel
+            {
+                ForumList = forumListing
+            };
+            return View(model);
         }
 
         public IActionResult Detail(int id)

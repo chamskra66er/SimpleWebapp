@@ -8,7 +8,8 @@ namespace CarServise.Data
     public interface IForum
     {
         Forum GetById(int id);
-        IEnumerable<Forum> GeyAll();
+        IEnumerable<Forum> GetAll();
+        IEnumerable<Forum> GetFilteredForums(string search);
 
         Task Create(Forum forum);
         Task Delete(int forumId);

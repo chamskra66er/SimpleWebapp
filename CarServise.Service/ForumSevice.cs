@@ -32,7 +32,10 @@ namespace CarServise.Service
             return forum;
         }
 
-        public IEnumerable<Forum> GeyAll() =>
+        public IEnumerable<Forum> GetFilteredForums(string searchQuery)=>
+            GetAll().Where(p => p.Title.Contains(searchQuery) || p.Description.Contains(searchQuery));
+
+        public IEnumerable<Forum> GetAll() =>
             _context.Forums;
         //.Include(f => f.ImageUrl);
 
