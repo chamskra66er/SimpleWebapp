@@ -33,7 +33,7 @@ namespace CarServise.Data
                 {
                     await roleManager.CreateAsync(new IdentityRole(role));
                 }
-                ApplicationUser user = new ApplicationUser()
+                ApplicationUser user = new ApplicationUser
                 {
                     UserName = username,
                     Email = email
