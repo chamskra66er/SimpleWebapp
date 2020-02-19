@@ -1,5 +1,5 @@
 ﻿@using CarServise.Views.Manage
-@inject SignInManager<ApplicationUser> SignInManager
+@inject SignInManager<CarServise.Data.Models.ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

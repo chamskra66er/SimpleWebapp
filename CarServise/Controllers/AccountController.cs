@@ -15,6 +15,7 @@ using CarServise.Models.AccountViewModels;
 using CarServise.Services;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using CarServise.Data.Models;
 
 namespace CarServise.Controllers
 {

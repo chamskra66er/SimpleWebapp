@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using CarServise.Models;
 using CarServise.Data.Models;
 using System.Threading.Tasks;
 using System;

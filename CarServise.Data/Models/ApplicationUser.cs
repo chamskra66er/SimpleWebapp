@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace CarServise.Models
+namespace CarServise.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
