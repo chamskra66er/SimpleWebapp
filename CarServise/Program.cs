@@ -20,6 +20,7 @@ namespace CarServise
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseDefaultServiceProvider(p=>p.ValidateScopes=false)
                 .Build();
     }
 }
