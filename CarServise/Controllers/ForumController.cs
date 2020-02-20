@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using CarServise.Models;
 using ClosedXML.Excel;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace CarServise.Controllers
 {
@@ -93,6 +94,18 @@ namespace CarServise.Controllers
             var model = new AddForumModel();
             return View(model);
         }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddForum(AddForumModel model, IFormFile UploadImage,
+            IFormFile UploadVideo, IFormFile UploadFile)
+        {
+
+
+
+
+        }
+
+
         [Authorize]
         [HttpPost]        
         public IActionResult Report(ReportModel model)
