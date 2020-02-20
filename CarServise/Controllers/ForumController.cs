@@ -110,11 +110,12 @@ namespace CarServise.Controllers
 
             if (model.UploadImage != null)
             {
+                
                 var contentDisposition = ContentDispositionHeaderValue.Parse(UploadImage.ContentDisposition);
                 var fileName = contentDisposition.FileName.Trim('"');
                 var pathHost = _host.WebRootPath;
                 var parsePath = pathHost.Replace('\\', '/');
-                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                var path = pathHost + $"/images/forum/" + fileName;
                 imageUri = $"/images/forum/{User.Identity.Name}/" + fileName;
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
@@ -132,7 +133,7 @@ namespace CarServise.Controllers
                 var fileName = contentDisposition.FileName.Trim('"');
                 var pathHost = _host.WebRootPath;
                 var parsePath = pathHost.Replace('\\', '/');
-                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                var path = pathHost + $"/images/forum/" + fileName;
                 videoUri = $"/images/forum/{User.Identity.Name}/" + fileName;
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
@@ -150,7 +151,7 @@ namespace CarServise.Controllers
                 var fileName = contentDisposition.FileName.Trim('"');
                 var pathHost = _host.WebRootPath;
                 var parsePath = pathHost.Replace('\\', '/');
-                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                var path = pathHost + $"/images/forum/" + fileName;
                 fileUri = $"/images/forum/{User.Identity.Name}/" + fileName;
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
@@ -170,13 +171,13 @@ namespace CarServise.Controllers
                 ImageUrl = imageUri,
                 FileUrl = fileUri,
                 Path = User.Identity.Name,
-                Value  =model.Value,
+                Value  = model.Value,
                 Comment = model.Comment,
                 DateCreate = DateTime.Now,
                 DateFinish = model.DateFinish
             };
-            await _forumService.Add();
-
+            await _forumService.Add(forum);
+            return RedirectToAction("Index", "Forum", forum);
         }
 
 
