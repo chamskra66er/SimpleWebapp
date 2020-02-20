@@ -49,5 +49,11 @@ namespace CarServise.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task Add(Forum forum)
+        {
+            _context.Add(forum);
+            await _context.SaveChangesAsync();
+        }
     }
 }

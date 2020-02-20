@@ -15,5 +15,6 @@ namespace CarServise.Data
         Task Delete(int forumId);
         Task UpdateForumTitle(int forumId, string newTitle);
         Task UpdateForumDescription(int forumId, string newDescription);
+        Task Add(Forum forum);
     }
 }
