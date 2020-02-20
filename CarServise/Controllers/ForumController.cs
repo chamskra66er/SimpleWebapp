@@ -12,6 +12,8 @@ using CarServise.Models;
 using ClosedXML.Excel;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CarServise.Controllers
 {
@@ -19,10 +21,13 @@ namespace CarServise.Controllers
     {
         private readonly IForum _forumService;
         private readonly UserManager<ApplicationUser> _userManager;
-        public ForumController(IForum forumService, UserManager<ApplicationUser> userManager)
+        private readonly IHostingEnvironment _host;
+        public ForumController(IForum forumService, UserManager<ApplicationUser> userManager,
+            IHostingEnvironment host)
         {
             _forumService = forumService;
             _userManager = userManager;
+            _host = host;
         }
         public IActionResult Index()
         {
@@ -99,9 +104,78 @@ namespace CarServise.Controllers
         public async Task<IActionResult> AddForum(AddForumModel model, IFormFile UploadImage,
             IFormFile UploadVideo, IFormFile UploadFile)
         {
+            var imageUri = "";
+            var videoUri = "";
+            var fileUri = "";
 
+            if (model.UploadImage != null)
+            {
+                var contentDisposition = ContentDispositionHeaderValue.Parse(UploadImage.ContentDisposition);
+                var fileName = contentDisposition.FileName.Trim('"');
+                var pathHost = _host.WebRootPath;
+                var parsePath = pathHost.Replace('\\', '/');
+                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                imageUri = $"/images/forum/{User.Identity.Name}/" + fileName;
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await UploadImage.CopyToAsync(fileStream);
+                }
+            }
+            else
+            {
+                imageUri = "/images/forum/default.png";
+            }
 
+            if (model.UploadVideo != null)
+            {
+                var contentDisposition = ContentDispositionHeaderValue.Parse(UploadVideo.ContentDisposition);
+                var fileName = contentDisposition.FileName.Trim('"');
+                var pathHost = _host.WebRootPath;
+                var parsePath = pathHost.Replace('\\', '/');
+                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                videoUri = $"/images/forum/{User.Identity.Name}/" + fileName;
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await UploadVideo.CopyToAsync(fileStream);
+                }
+            }
+            else
+            {
+                videoUri = "/images/forum/default.mp4";
+            }
 
+            if (model.UploadFile != null)
+            {
+                var contentDisposition = ContentDispositionHeaderValue.Parse(UploadFile.ContentDisposition);
+                var fileName = contentDisposition.FileName.Trim('"');
+                var pathHost = _host.WebRootPath;
+                var parsePath = pathHost.Replace('\\', '/');
+                var path = pathHost + $"/images/forum/{User.Identity.Name}" + fileName;
+                fileUri = $"/images/forum/{User.Identity.Name}/" + fileName;
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await UploadFile.CopyToAsync(fileStream);
+                }
+            }
+            else
+            {
+                fileUri = "/images/forum/default.xlsx";
+            }
+
+            var forum = new Forum
+            {
+                Title = model.Title,
+                Description = model.Description,
+                VideoUrl = videoUri,
+                ImageUrl = imageUri,
+                FileUrl = fileUri,
+                Path = User.Identity.Name,
+                Value  =model.Value,
+                Comment = model.Comment,
+                DateCreate = DateTime.Now,
+                DateFinish = model.DateFinish
+            };
+            await _forumService.Add();
 
         }
 
