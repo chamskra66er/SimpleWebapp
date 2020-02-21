@@ -14,23 +14,24 @@
         </form>
     </div>
     <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
-    <table class="table col-md-4">
         @foreach (var forum in Model.Forum)
         {
-            <tr>
+
+            <div class="col-md-4">
+                <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
+                <div>Имя: @forum.Name</div>
+                <div>Цена за работу: @forum.Value</div>
+                <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
+                    Расчитать
+                </a>
+            </div>
+
+            @*<tr>
                 <td>
-                    <div class="col-md-4">
-                        <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
-                        <div>Имя: @forum.Name</div>
-                        <div>Цена за работу: @forum.Value</div>
-                        <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
-                            Расчитать
-                        </a>
-                    </div>
+
                 </td>
-            </tr>
+            </tr>*@
         }
-    </table>
 
 
 </div>
