@@ -27,9 +27,17 @@ namespace CarServise.Service
             await _context.SaveChangesAsync();
         }
 
-        public Task Edit(ApplicationUser user)
+        public async Task Edit(string id, ApplicationUser user)
         {
-            throw new NotImplementedException();
+            var profile = GetById(id);
+            profile.FIO = user.FIO;
+            profile.CompanyName = user.CompanyName;
+            profile.OkpoName = user.OkpoName;
+            profile.PhoneNumber = user.PhoneNumber;
+            profile.Email = user.Email;
+            _context.ApplicationUsers.Update(profile);
+            await _context.SaveChangesAsync();
+
         }
 
         public IEnumerable<ApplicationUser> GetAll()

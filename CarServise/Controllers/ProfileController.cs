@@ -45,9 +45,26 @@ namespace CarServise.Models.ForumViewModels
 
             return View(model);
         }
-        public IActionResult Edit(string UserId)
+        public IActionResult Edit(string id)
+            {
+            var user = _userService.GetById(id);
+            var model = new ProfileModel
+            {
+                UserId = user.Id,
+                FIO = user.FIO,
+                CompName = user.CompanyName,
+                OKPOname = user.OkpoName,
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                Since = user.MemberSince
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(string id, ProfileModel profile)
         {
-            return View();
+            var user = _userService.Edit(id, profile);
+            return View("Index");
         }
 
     }

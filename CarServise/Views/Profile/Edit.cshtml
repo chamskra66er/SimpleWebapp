@@ -1,0 +1,43 @@
+﻿@model CarServise.Models.ProfileViewModels.ProfileModel
+<h3>Detail Profile for next edit </h3>
+<div class="container">
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <div>@Model.FIO</div>
+                <div>@Model.CompanyName</div>
+                <div>@Model.OkpoName</div>
+                <div>@Model.Phone</div>
+                <div>@Model.Email</div>
+            </td>
+            <td>
+                <form asp-controller="Profile" asp-action="Edit" method="post">
+                    <div class="form-group">
+                        <label asp-for="FIO"></label>
+                        <input class="form-control" asp-for="FIO" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CompanyName"></label>
+                        <input class="form-control" asp-for="CompanyName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OkpoName"></label>
+                        <input class="form-control" asp-for="OkpoName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone"></label>
+                        <input class="form-control" asp-for="Phone" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input class="form-control" asp-for="Email" />
+                    </div>
+                    <button type="submit" id="submitPostBtn" class="btn btn-submitPost">Отправить данные</button>
+                    <a class="btn btn-canselPost" asp-controller="Profile" asp-action="Index">Отменить</a>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
