@@ -1,0 +1,22 @@
+﻿@model  CarServise.Models.ProfileViewModels.ProfileListModel
+
+<div class="container">
+    <table class="table table-hover">
+        @foreach (var forum in Model.Profiles)
+        {
+            <tr>
+                <td>
+                    <div class="col-lg-12">
+                        <div class="col-md-3">@forum.FIO</div>
+                        <div class="col-md-2">@forum.City</div>
+                        <div class="col-md-2">@forum.OKPOname</div>
+                        <div class="col-md-2">@forum.Email</div>
+                        <div class="col-md-2">@forum.Phone</div>
+                        <div class="col-md-2">@forum.Since</div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
