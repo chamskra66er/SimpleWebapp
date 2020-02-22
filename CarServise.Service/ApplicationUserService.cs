@@ -15,14 +15,16 @@ namespace CarServise.Service
         {
             _context = context;
         }
-        public Task Add(ApplicationUser user)
+        public async Task Add(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            _context.Add(user);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Deactivate(ApplicationUser user)
+        public async Task Deactivate(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            _context.Update(user);
+            await _context.SaveChangesAsync();
         }
 
         public Task Edit(ApplicationUser user)

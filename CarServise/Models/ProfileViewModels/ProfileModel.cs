@@ -7,7 +7,7 @@ namespace CarServise.Models.ProfileViewModels
 {
     public class ProfileModel
     {
-        public string Id { get; set; }
+        public string UserId { get; set; }
         public string FIO { get; set; }
         public string CompName { get; set; }
         public string OKPOname { get; set; }

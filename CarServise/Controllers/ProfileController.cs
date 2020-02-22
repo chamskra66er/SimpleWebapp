@@ -29,7 +29,7 @@ namespace CarServise.Models.ForumViewModels
                 .OrderByDescending(u=>u.FIO)
                 .Select(p=> new ProfileModel
                 {
-                    Id = p.Id,
+                    UserId = p.Id,
                     FIO = p.FIO,
                     CompName = p.CompanyName,
                     OKPOname = p.OkpoName,
@@ -44,6 +44,10 @@ namespace CarServise.Models.ForumViewModels
             };
 
             return View(model);
+        }
+        public IActionResult Edit(string UserId)
+        {
+            return View();
         }
 
     }
