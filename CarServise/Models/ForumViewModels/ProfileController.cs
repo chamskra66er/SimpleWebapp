@@ -1,5 +1,6 @@
 ﻿using CarServise.Data;
 using CarServise.Data.Models;
+using CarServise.Models.ProfileViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,11 +27,20 @@ namespace CarServise.Models.ForumViewModels
                 .OrderByDescending(u=>u.FIO)
                 .Select(p=> new ProfileModel
                 {
-
+                    Id = Convert.ToInt32(p.Id),
+                    FIO = p.FIO,
+                    CompName = p.CompanyName,
+                    OKPOname = p.OkpoName,
+                    City = p.Sity,
+                    Since = p.MemberSince,
+                    Phone = p.PhoneNumber
                 });
+            var model = new ProfileListModel
+            {
+                Profiles = profiles
+            };
 
-
-            return View();
+            return View(model);
         }
 
     }
