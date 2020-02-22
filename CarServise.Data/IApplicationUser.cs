@@ -12,6 +12,7 @@ namespace CarServise.Data
         IEnumerable<ApplicationUser> GetAll();
         Task Add(ApplicationUser user);
         Task Deactivate(ApplicationUser user);
+        Task Edit(ApplicationUser user);
 
     }
 }

@@ -25,6 +25,11 @@ namespace CarServise.Service
             throw new NotImplementedException();
         }
 
+        public Task Edit(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<ApplicationUser> GetAll()
         {
             throw new NotImplementedException();

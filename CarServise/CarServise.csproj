@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Models\ImageViewModels\" />
+    <Folder Include="Models\UserViewModels\" />
   </ItemGroup>
 
 
