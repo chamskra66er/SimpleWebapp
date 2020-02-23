@@ -34,7 +34,6 @@ namespace CarServise.Service
             profile.CompanyName = user.CompanyName;
             profile.OkpoName = user.OkpoName;
             profile.PhoneNumber = user.PhoneNumber;
-            profile.Email = user.Email;
             _context.ApplicationUsers.Update(profile);
             await _context.SaveChangesAsync();
 
