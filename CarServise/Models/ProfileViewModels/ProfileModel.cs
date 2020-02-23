@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarServise.Models.ProfileViewModels
 {
-    public class ProfileModel 
+    public class ProfileModel : ApplicationUser
     {
         public string UserId { get; set; }
         public string FIO { get; set; }

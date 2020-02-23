@@ -60,12 +60,12 @@ namespace CarServise.Models.ForumViewModels
             };
             return View(model);
         }
-        [HttpPost]
-        public IActionResult Edit(string id, ProfileModel profile)
-        {
-            var user = _userService.Edit(id, profile);
-            return View("Index");
-        }
+        //[HttpPost]
+        //public IActionResult Edit(string id, ProfileModel profile)
+        //{
+        //    var user = _userService.Edit(id, profile);
+        //    return View("Index");
+        //}
 
     }
 }
