@@ -2,7 +2,10 @@
 
 <div class="container">
 
-    <div class="col-lg-5"><h4>Index Forum</h4></div>
+    <div class="col-md-3" id="categories">
+        @await Component.InvokeAsync("NavigationMenu")
+    </div>
+    <div class="col-lg-3"><h4>Index Forum</h4></div>
     <div class="col-lg-4">
         <form asp-controller="Search" asp-action="Search" method="post">
             <div class="searchForm">
