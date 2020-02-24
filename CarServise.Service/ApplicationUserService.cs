@@ -23,7 +23,7 @@ namespace CarServise.Service
 
         public async Task Deactivate(ApplicationUser user)
         {
-            _context.Update(user);
+            _context.Remove(user);
             await _context.SaveChangesAsync();
         }
 

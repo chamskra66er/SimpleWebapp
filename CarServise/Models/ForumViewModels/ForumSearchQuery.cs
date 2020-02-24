@@ -9,5 +9,6 @@ namespace CarServise.Models.ForumViewModels
     {
         public IEnumerable<ForumListingModel> Forum { get; set; }
         public string SearchQuery { get; set; }
+        public PagingInfo PagingInfo { get; set; }
     }
 }

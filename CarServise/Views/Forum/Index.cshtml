@@ -24,14 +24,8 @@
                 <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
                     Расчитать
                 </a>
-            </div>
-
-            @*<tr>
-                <td>
-
-                </td>
-            </tr>*@
+            </div>           
         }
-
-
+</div>
+<div page-model="@Model.PagingInfo" page-action="Index" >
 </div>

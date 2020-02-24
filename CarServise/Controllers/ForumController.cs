@@ -22,6 +22,7 @@ namespace CarServise.Controllers
         private readonly IForum _forumService;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _host;
+        public int PageSize = 2;
         public ForumController(IForum forumService, UserManager<ApplicationUser> userManager,
             IHostingEnvironment host)
         {
@@ -29,9 +30,9 @@ namespace CarServise.Controllers
             _userManager = userManager;
             _host = host;
         }
-        public IActionResult Index()
+        public IActionResult Index(int forumPage=1)
         {
-            var forums = _forumService.GetAll()
+            var forums = _forumService.GetAll()              
                 .Select(forum => new ForumListingModel
                 {
                     Id = forum.Id,
@@ -42,8 +43,16 @@ namespace CarServise.Controllers
             var model = new ForumSearchQuery
             {
                 Forum = forums
+                .OrderBy(p=>p.Id)
+                .Skip((forumPage-1)*PageSize)
+                .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = forumPage,
+                    ItemsPerPage = PageSize,
+                    TotalItems = forums.Count()
+                }
             };
-
             return View(model);
         }
         [HttpPost]
