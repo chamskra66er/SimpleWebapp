@@ -30,7 +30,7 @@ namespace CarServise.Controllers
             _userManager = userManager;
             _host = host;
         }
-        public IActionResult Index(string category, int forumPage=1)//
+        public IActionResult Index(string category, int forumPage=1)
         {
             var forums = _forumService.GetAll()              
                 .Select(forum => new ForumListingModel
@@ -43,15 +43,18 @@ namespace CarServise.Controllers
             var model = new ForumSearchQuery
             {
                 Forum = forums
-                .Where(p=>p.Name == category || category==null)
-                .OrderBy(p=>p.Id)
-                .Skip((forumPage-1)*PageSize)
+                .Where(p => p.Name == category || category == null)
+                .OrderBy(p => p.Id)
+                .Skip((forumPage - 1) * PageSize)
                 .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = forumPage,
                     ItemsPerPage = PageSize,
-                    TotalItems = forums.Count()
+                    TotalItems = category == null ?
+                    forums.Count() :
+                    forums.Where(e => e.Name == category).Count()
+                    //TotalItems = forums.Count()
                 },
                 CurrentCategory = category
             };

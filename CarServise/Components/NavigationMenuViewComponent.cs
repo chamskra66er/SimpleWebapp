@@ -23,6 +23,7 @@ namespace CarServise.Components
                     Id = forum.Id,
                     Name = forum.Title,
                 });
+            ViewBag.SelectedCategory = RouteData?.Values["category"];
             return View(forums
                 .Select(x=>x.Name)
                 .Distinct()
