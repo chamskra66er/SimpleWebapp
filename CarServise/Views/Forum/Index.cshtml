@@ -19,7 +19,6 @@
     <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
         @foreach (var forum in Model.Forum)
         {
-
             <div class="col-md-4">
                 <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
                 <div>Имя: @forum.Name</div>
@@ -27,6 +26,13 @@
                 <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
                     Расчитать
                 </a>
+                <form asp-controller="Cart" asp-action="AddToCart" id="@forum.Id" method="post">
+                    <input type="hidden" asp-for="@forum.Id"/>
+                    <input type="hidden" name="returnUrl" @*value="@ViewContext.HttpContext.Request.PathAndQuery(*@)"/>
+                <button type="submit" class="btn btn-success btn-sm pull-right" style="float:right">
+                    В корзину
+                </button>
+                </form>
             </div>           
         }
 </div>
