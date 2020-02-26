@@ -1,4 +1,5 @@
 ﻿@model CarServise.Models.ForumViewModels.ForumSearchQuery
+@using CarServise.Infrastructure
 
 <div class="container">
 
@@ -19,21 +20,25 @@
     <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
         @foreach (var forum in Model.Forum)
         {
-            <div class="col-md-4">
-                <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
-                <div>Имя: @forum.Name</div>
-                <div>Цена за работу: @forum.Value</div>
-                <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
-                    Расчитать
-                </a>
-                <form asp-controller="Cart" asp-action="AddToCart" id="@forum.Id" method="post">
-                    <input type="hidden" asp-for="@forum.Id"/>
-                    <input type="hidden" name="returnUrl" @*value="@ViewContext.HttpContext.Request.PathAndQuery(*@)"/>
-                <button type="submit" class="btn btn-success btn-sm pull-right" style="float:right">
-                    В корзину
-                </button>
-                </form>
-            </div>           
+    <div class="col-md-4">
+        <div class="bodyStyle" style="background-image: url(@forum.ImgUrl)"></div>
+        <div>Имя: @forum.Name</div>
+        <div>Цена за работу: @forum.Value</div>
+        <a asp-controller="Forum" asp-action="Detail" asp-route-id="@forum.Id" class="btn btn-primary btn-sm">
+            Расчитать
+        </a>
+        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forum.Id" class="btn btn-success btn-sm">
+            В корзину
+        </a>
+        @*<form asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forum.Id" method="post">
+            <input asp-for="Forum" type="hidden" />
+            <input type="hidden" name="returnUrl" /> value="@ViewContext.HttpContext.Request.PathAndQuery()"
+            <button type="submit" class="btn btn-success btn-sm pull-right">
+                style="float:right"
+            В корзину
+        </button>
+        </form>*@
+    </div>           
         }
 </div>
 <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"

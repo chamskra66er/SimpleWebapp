@@ -1,23 +1,21 @@
-﻿using CarServise.Data;
-using CarServise.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CarServise.Service
+namespace CarServise.Data.Models
 {
-    public class CartService : ICart
+    public class Cart
     {
-        private List<Cart> lineCollection = new List<Cart>();
+        public List<CartLine> lineCollection = new List<CartLine>();
         public void AddItem(Forum forum, int quantity)
         {
-            Cart line = lineCollection
+            var line = lineCollection
                 .Where(p => p.Forum.Id == forum.Id)
                 .FirstOrDefault();
             if (line == null)
             {
-                lineCollection.Add(new Cart
+                lineCollection.Add(new CartLine
                 {
                     Forum = forum,
                     Quantity = quantity
@@ -28,15 +26,19 @@ namespace CarServise.Service
                 line.Quantity += quantity;
             }
         }
-
         public virtual void Clear() => lineCollection.Clear();
-
         public virtual decimal ComputerTotalValue() =>
             lineCollection.Sum(e => Convert.ToInt32(e.Forum.Value) * e.Quantity);
 
-        public virtual IEnumerable<Cart> Lines() => lineCollection;
+        public virtual IEnumerable<CartLine> Lines => lineCollection;
 
         public virtual void RemoveLine(Forum forum) =>
             lineCollection.RemoveAll(l => l.Forum.Id == forum.Id);
+    }
+    public class CartLine
+    {
+        public int CartLineId { get; set; }
+        public Forum Forum { get; set; }
+        public int Quantity { get; set; }
     }
 }

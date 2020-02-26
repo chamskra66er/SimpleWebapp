@@ -34,6 +34,7 @@ namespace CarServise
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumSevice>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
+            services.AddScoped<Cart>();
 
             services.AddMvc();
             services.AddMemoryCache();
