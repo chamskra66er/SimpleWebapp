@@ -9,33 +9,33 @@ namespace CarServise.Controllers
     public class CartController:Controller
     {
         private IForum _forumService;
-        private Cart _cart;
+        public Cart cart;
 
-        public CartController(Cart cart,
-            IForum forumService)
+        public CartController(IForum forumService, Cart cart)
         {
-            _cart = cart;
+            this.cart = cart;
             _forumService = forumService;
         }
-        public IActionResult Index()
-        {
-            var model = new CartIndexModel
-            {
-                Cart = _cart
-                //ReturnUrl = returnUrl
-            };
-            return View(model);
-        }
-        //[HttpPost]
+        //public ViewResult Index(Cart _cart)
+        //{
+        //    var model = new CartIndexModel
+        //    {
+        //        Cart = _cart
+        //    };
+        //    return View(model);
+        //}
         public IActionResult AddToCart(int id)
         {
-            //var modelId = model.Id;
             var forum = _forumService.GetById(id);
             if (forum!=null)
             {
-                _cart.AddItem(forum, 1);              
+                cart.AddItem(forum, 1);              
             }
-            return RedirectToAction("Index"); /*new { returnUrl }*/
+            var model = new CartIndexModel
+            {
+                Cart = cart
+            };
+            return View("Index", model);
         }
         public RedirectToActionResult RemoveFromCart(int forumId,
                 string returnUrl)
@@ -44,7 +44,7 @@ namespace CarServise.Controllers
 
             if (forum != null)
             {
-                _cart.RemoveLine(forum);
+                cart.RemoveLine(forum);
             }
             return RedirectToAction("Index","Cart", new { returnUrl });
         }

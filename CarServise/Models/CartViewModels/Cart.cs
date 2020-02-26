@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarServise.Data.Models
 {
     public class Cart
     {
-        public List<CartLine> lineCollection = new List<CartLine>();
+        public List<CartLine> lineCollection { get; set; } = new List<CartLine>();
         public void AddItem(Forum forum, int quantity)
         {
             var line = lineCollection
@@ -29,8 +28,7 @@ namespace CarServise.Data.Models
         public virtual void Clear() => lineCollection.Clear();
         public virtual decimal ComputerTotalValue() =>
             lineCollection.Sum(e => Convert.ToInt32(e.Forum.Value) * e.Quantity);
-
-        public virtual IEnumerable<CartLine> Lines => lineCollection;
+        public IEnumerable<CartLine> Lines => lineCollection;
 
         public virtual void RemoveLine(Forum forum) =>
             lineCollection.RemoveAll(l => l.Forum.Id == forum.Id);
