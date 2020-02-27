@@ -16,20 +16,12 @@ namespace CarServise.Controllers
             this.cart = cart;
             _forumService = forumService;
         }
-        //public ViewResult Index(Cart _cart)
-        //{
-        //    var model = new CartIndexModel
-        //    {
-        //        Cart = _cart
-        //    };
-        //    return View(model);
-        //}
         public IActionResult AddToCart(int id)
         {
             var forum = _forumService.GetById(id);
             if (forum!=null)
             {
-                cart.AddItem(forum, 1);              
+                cart.AddItem(forum, 1);
             }
             var model = new CartIndexModel
             {
@@ -47,8 +39,6 @@ namespace CarServise.Controllers
                 cart.RemoveLine(forum);
             }
             return RedirectToAction("Index","Cart", new { returnUrl });
-        }
-
-
+        }       
     }
 }

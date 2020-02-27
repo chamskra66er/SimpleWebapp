@@ -29,15 +29,7 @@
         </a>
         <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forum.Id" class="btn btn-success btn-sm">
             В корзину
-        </a>
-        @*<form asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forum.Id" method="post">
-            <input asp-for="Forum" type="hidden" />
-            <input type="hidden" name="returnUrl" /> value="@ViewContext.HttpContext.Request.PathAndQuery()"
-            <button type="submit" class="btn btn-success btn-sm pull-right">
-                style="float:right"
-            В корзину
-        </button>
-        </form>*@
+        </a>       
     </div>           
         }
 </div>
