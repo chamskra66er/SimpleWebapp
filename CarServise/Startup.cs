@@ -8,6 +8,8 @@ using CarServise.Data;
 using CarServise.Services;
 using CarServise.Service;
 using CarServise.Data.Models;
+using CarServise.Models.CartViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace CarServise
 {
@@ -34,11 +36,13 @@ namespace CarServise
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumSevice>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
-            services.AddScoped<Cart>();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddMvc();
             services.AddMemoryCache();
             services.AddSession();
+            services.AddMvc();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +60,7 @@ namespace CarServise
             }
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseAuthentication();
 
             app.UseMvc(routes =>
