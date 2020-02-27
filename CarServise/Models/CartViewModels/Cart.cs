@@ -1,13 +1,14 @@
-﻿using System;
+﻿using CarServise.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarServise.Data.Models
+namespace CarServise.Models.CartViewModels
 {
     public class Cart
     {
         public List<CartLine> lineCollection { get; set; } = new List<CartLine>();
-        public void AddItem(Forum forum, int quantity)
+        public virtual void AddItem(Forum forum, int quantity)
         {
             var line = lineCollection
                 .Where(p => p.Forum.Id == forum.Id)
