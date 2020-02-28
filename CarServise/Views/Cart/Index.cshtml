@@ -20,11 +20,7 @@
                     @((line.Quantity * Convert.ToInt32(line.Forum.Value)).ToString("c"))
                 </td>
                 <td>
-                    <form asp-action="RemoveFromCart" method="post">
-                        <input type="hidden" name="ProductID"
-                               value="@line.Forum.Id" />
-                        <input type="hidden" name="returnUrl"
-                               value="@Model.ReturnUrl" />
+                    <form asp-action="RemoveFromCart" asp-controller="Cart" asp-route-id="@line.Forum.Id" method="post">
                         <button type="submit" class="btn btn-sm btn-danger">
                             Убрать
                         </button>

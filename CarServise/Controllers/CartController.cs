@@ -32,16 +32,15 @@ namespace CarServise.Controllers
             
             return RedirectToAction("Index");
         }
-        public RedirectToActionResult RemoveFromCart(int forumId,
-                string returnUrl)
+        public IActionResult RemoveFromCart(int id)
         {
-            var forum = _forumService.GetById(forumId);
+            var forum = _forumService.GetById(id);
 
             if (forum != null)
             {
                 _cart.RemoveLine(forum);
             }
-            return RedirectToAction("Index","Cart", new { returnUrl });
+            return RedirectToAction("Index","Cart");
         }       
     }
 }
