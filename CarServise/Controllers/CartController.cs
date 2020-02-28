@@ -1,7 +1,5 @@
 ﻿using CarServise.Data;
-using CarServise.Data.Models;
 using CarServise.Models.CartViewModels;
-using CarServise.Models.ForumViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarServise.Controllers

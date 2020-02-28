@@ -8,7 +8,6 @@ using CarServise.Data.Models;
 using CarServise.Models.ForumViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using CarServise.Models;
 using ClosedXML.Excel;
 using System.IO;
 using Microsoft.AspNetCore.Http;
