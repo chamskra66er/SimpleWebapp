@@ -7,7 +7,7 @@ namespace CarServise.Models.CartViewModels
 {
     public class Cart
     {
-        public List<CartLine> lineCollection { get; set; } = new List<CartLine>();
+        private List<CartLine> lineCollection = new List<CartLine>();
         public virtual void AddItem(Forum forum, int quantity)
         {
             var line = lineCollection

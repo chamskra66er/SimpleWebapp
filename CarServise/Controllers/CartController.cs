@@ -6,28 +6,33 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarServise.Controllers
 {
-    public class CartController:Controller
+    public class CartController : Controller
     {
         private IForum _forumService;
-        public Cart cart;
+        private Cart _cart;
 
         public CartController(IForum forumService, Cart cart)
         {
-            this.cart = cart;
+            _cart = cart;
             _forumService = forumService;
+        }
+        public IActionResult Index()
+        {
+            var model = new CartIndexModel
+            {
+                Cart = _cart
+            };
+            return View(model);
         }
         public IActionResult AddToCart(int id)
         {
             var forum = _forumService.GetById(id);
             if (forum!=null)
             {
-                cart.AddItem(forum, 1);
+                _cart.AddItem(forum, 1);
             }
-            var model = new CartIndexModel
-            {
-                Cart = cart
-            };
-            return View("Index", model);
+            
+            return RedirectToAction("Index");
         }
         public RedirectToActionResult RemoveFromCart(int forumId,
                 string returnUrl)
@@ -36,7 +41,7 @@ namespace CarServise.Controllers
 
             if (forum != null)
             {
-                cart.RemoveLine(forum);
+                _cart.RemoveLine(forum);
             }
             return RedirectToAction("Index","Cart", new { returnUrl });
         }       
