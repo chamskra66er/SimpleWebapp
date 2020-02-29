@@ -55,6 +55,12 @@
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
+            <div class="row">
+                <div class="col-4 text-right">
+                    @await  Component.InvokeAsync("CartSummary")
+                </div>
+
+            </div>
         </div>
     </nav>
     <div class="container body-content">
