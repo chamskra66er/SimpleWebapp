@@ -14,6 +14,7 @@ namespace CarServise.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Forum> Forums { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider, 
             IConfiguration configuration)
