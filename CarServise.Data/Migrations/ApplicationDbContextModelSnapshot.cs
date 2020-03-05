@@ -143,9 +143,6 @@ namespace CarServise.Data.Migrations
                     b.Property<string>("Address")
                         .IsRequired();
 
-                    b.Property<string>("City")
-                        .IsRequired();
-
                     b.Property<string>("Country")
                         .IsRequired();
 
@@ -155,9 +152,6 @@ namespace CarServise.Data.Migrations
                         .IsRequired();
 
                     b.Property<string>("ShipStatus");
-
-                    b.Property<string>("State")
-                        .IsRequired();
 
                     b.Property<string>("Zip");
 

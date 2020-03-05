@@ -1,6 +1,7 @@
 ﻿@model CarServise.Models.ForumViewModels.ForumSearchQuery
 @using CarServise.Infrastructure
 
+<hr/>
 <div class="container">
 
     <div class="col-md-3" id="categories">
@@ -17,7 +18,7 @@
             </div>
         </form>
     </div>
-    <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create">Создать</a></div>
+    <div class="col-lg-2"><a asp-controller="Forum" asp-action="Create" class="btn btn-primary">Создать</a></div>
         @foreach (var forum in Model.Forum)
         {
     <div class="col-md-4">

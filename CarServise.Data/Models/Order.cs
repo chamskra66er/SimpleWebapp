@@ -21,12 +21,6 @@ namespace CarServise.Data.Models
         [Required(ErrorMessage = "Пожалйуста, введите адрес")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Пожалуйста, введите название города")]
-        public string City { get; set; }
-
-        [Required(ErrorMessage = "Пожалйуста, введите название района")]
-        public string State { get; set; }
-
         public string Zip { get; set; }
 
         [Required(ErrorMessage = "Пожалуйста, введите название страны")]

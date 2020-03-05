@@ -19,6 +19,11 @@ namespace CarServise.Service
         public IQueryable<Order> Orders =>
             _context.Orders.Include(l => l.Lines).ThenInclude(o => o.Forum);
 
+        public Order GetById(int id)
+        {
+            return _context.Orders.Where(x => x.OrderId == id).FirstOrDefault();
+        }
+
         public void SaveOrder(Order order)
         {
             _context.AttachRange(order.Lines.Select(l => l.Forum));

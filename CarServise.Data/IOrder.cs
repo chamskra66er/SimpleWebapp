@@ -8,5 +8,6 @@ namespace CarServise.Data
     {
         IQueryable<Order> Orders { get; }
         void SaveOrder(Order order);
+        Order GetById(int id);
     }
 }

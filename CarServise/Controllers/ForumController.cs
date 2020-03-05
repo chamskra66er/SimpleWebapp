@@ -146,7 +146,7 @@ namespace CarServise.Controllers
                 var fileName = contentDisposition.FileName.Trim('"');
                 var pathHost = _host.WebRootPath;
                 var parsePath = pathHost.Replace('\\', '/');
-                var path = pathHost + $"/images/forum/" + fileName;
+                var path = pathHost + $"/images/forum/{User.Identity.Name}/" + fileName;
                 videoUri = $"/images/forum/{User.Identity.Name}/" + fileName;
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {

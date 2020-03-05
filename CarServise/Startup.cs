@@ -36,6 +36,7 @@ namespace CarServise
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumSevice>();
             services.AddScoped<IApplicationUser, ApplicationUserService>();
+            services.AddScoped<IOrder, OrderService>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
