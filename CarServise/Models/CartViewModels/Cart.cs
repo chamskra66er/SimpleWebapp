@@ -34,10 +34,4 @@ namespace CarServise.Models.CartViewModels
         public virtual void RemoveLine(Forum forum) =>
             lineCollection.RemoveAll(l => l.Forum.Id == forum.Id);
     }
-    public class CartLine
-    {
-        public int CartLineId { get; set; }
-        public Forum Forum { get; set; }
-        public int Quantity { get; set; }
-    }
 }
