@@ -14,8 +14,8 @@ namespace CarServise.Models.PaypalViewModel
         static PaypalConfiguration()
         {
             var config = getconfig();
-            clientId = "AV2Vl-qjreusTl6hPhhXPFJgIdHC9A67OI3mwaRmXFdNyrLERKlZHx2EERbNvXQgNF_-99VNEY_2uSJI";
-            clientSecret = "EMu90bEssZkrm1xQYVTlUAU27v2d1LHXmLzjmqxH9b2RvOZZnoxy9mcelPhuX-4J_h6WvvN2QJK_w8nk";
+            clientId = config["clientId"];
+            clientSecret = config["clientSecret"];
         }
 
         private static Dictionary<string,string> getconfig()
@@ -24,8 +24,13 @@ namespace CarServise.Models.PaypalViewModel
         }
         private static string GetAccessToken()
         {
-            string accessToken = 
-                new OAuthTokenCredential(clientId, clientSecret, getconfig()).GetAccessToken();
+            return new OAuthTokenCredential(clientId, clientSecret, getconfig()).GetAccessToken();
+        }
+        public static APIContext GetAPIContext()
+        {
+            var apicontext = new APIContext(GetAccessToken());
+            apicontext.Config = getconfig();
+            return apicontext;
         }
     }
 }

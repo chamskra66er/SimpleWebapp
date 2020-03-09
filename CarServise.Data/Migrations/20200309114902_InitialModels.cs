@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarServise.Data.Migrations
 {
-    public partial class InitialNewModels : Migration
+    public partial class InitialModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,6 +82,7 @@ namespace CarServise.Data.Migrations
                     OrderId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ShipStatus = table.Column<string>(nullable: true),
+                    TotalPrice = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     Zip = table.Column<string>(nullable: true),

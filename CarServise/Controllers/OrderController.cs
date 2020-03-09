@@ -35,8 +35,10 @@ namespace CarServise.Controllers
             {
                 order.Lines = _cart.Lines.ToArray();
                 order.ShipStatus = "Ordered";
+                order.TotalPrice = _cart.ComputerTotalValue().ToString();
+
                 _orderService.SaveOrder(order);
-                return RedirectToAction("Completed");
+                return RedirectToAction("Completed", order);
             }
             else
             {
@@ -54,10 +56,10 @@ namespace CarServise.Controllers
             }
             return RedirectToAction("List");
         }
-        public IActionResult Completed()
+        public IActionResult Completed(Order order)
         {
             _cart.Clear();
-            return View();
+            return View(order);
         }
     }
 }

@@ -153,6 +153,8 @@ namespace CarServise.Data.Migrations
 
                     b.Property<string>("ShipStatus");
 
+                    b.Property<string>("TotalPrice");
+
                     b.Property<string>("Zip");
 
                     b.HasKey("OrderId");

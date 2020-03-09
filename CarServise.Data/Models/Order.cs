@@ -14,6 +14,8 @@ namespace CarServise.Data.Models
         public ICollection<CartLine> Lines { get; set; }
         [BindNever]
         public string ShipStatus { get; set; }
+        [BindNever]
+        public string TotalPrice { get; set; }
 
         [Required(ErrorMessage = "Пожалуйста, введите имя")]
         public string Name { get; set; }

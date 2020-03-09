@@ -14,9 +14,11 @@
 
 
   <ItemGroup>
+    <PackageReference Include="Braintree" Version="4.17.0" />
     <PackageReference Include="ClosedXML" Version="0.94.2" />
     <PackageReference Include="jQuery.UI" Version="1.12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
@@ -40,6 +42,13 @@
     <None Include="wwwroot\lib\jquery-ui-1.12.1.custom\external\jquery\jquery.js" />
     <None Include="wwwroot\lib\jquery-ui-1.12.1.custom\jquery-ui.js" />
     <None Include="wwwroot\lib\jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\..\Users\admin\Downloads\System.Web\System.Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

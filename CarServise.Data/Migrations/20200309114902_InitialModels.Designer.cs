@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarServise.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200305132433_Initial NewModels")]
-    partial class InitialNewModels
+    [Migration("20200309114902_InitialModels")]
+    partial class InitialModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,6 +154,8 @@ namespace CarServise.Data.Migrations
                         .IsRequired();
 
                     b.Property<string>("ShipStatus");
+
+                    b.Property<string>("TotalPrice");
 
                     b.Property<string>("Zip");
 
