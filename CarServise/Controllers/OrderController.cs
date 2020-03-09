@@ -38,7 +38,9 @@ namespace CarServise.Controllers
                 order.TotalPrice = _cart.ComputerTotalValue().ToString();
 
                 _orderService.SaveOrder(order);
-                return RedirectToAction("Completed", order);
+                _cart.Clear();
+
+                return View("Completed", order);
             }
             else
             {

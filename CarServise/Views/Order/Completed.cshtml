@@ -1,12 +1,14 @@
 ﻿@model CarServise.Data.Models.Order
 
-<div class="container">
-    <h4>@Model.TotalPrice</h4>
-</div>
+
 
 <h2>Спасибо!</h2>
 <p>Спасибо за оформление заказа.</p>
 <p>Оплатить заказ.</p>
+<div class="container">
+    <h4>@Model.TotalPrice</h4>
+    @{ var price = Model.TotalPrice;}
+</div>
 
 <div id="paypal-button"></div>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
