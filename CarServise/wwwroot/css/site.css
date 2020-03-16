@@ -1,7 +1,35 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    font-family:'Roboto';
 }
+.nav-wrapper {
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.block-example {
+    background-color: #808080;
+    padding: 15px;
+}
+.logo{
+    font-size:22px;
+    color:#041122;
+    font-weight:600;
+}
+.navigation{
+    font-size:18px;
+    font-weight:400;
+}
+.navigation-link{
+    font-family:'Roboto Mono';
+    color:#52575D;
+    text-decoration:none;
+    margin-right:20px;
+}
+
+
+
+
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

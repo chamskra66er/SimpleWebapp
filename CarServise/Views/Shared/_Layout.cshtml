@@ -9,6 +9,7 @@
     <title>@ViewData["Title"] - CarServise</title>
 
     <environment include="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.css" />
@@ -16,7 +17,6 @@
         <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/font-awesome.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
@@ -25,47 +25,46 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light white scrolling-navbar">
+    <nav class="nav-wrapper">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Forum" asp-action="Index" class="navbar-brand">CarServise</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">Форум</a></li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        @if (User.IsInRole("Admins"))
-                        {
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Настройки<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-
-                                    <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Админ</li>
-                                    <li><a asp-controller="Forum" asp-action="Create">Редактировать Форум</a></li>
-                                    <li><a asp-controller="Profile" asp-action="Index">Пользователи</a></li>
-                                    <li><a asp-controller="Order" asp-action="List">Заказы</a></li>
-                                </ul>
-                            </li>
-                        }
-                    }
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
             <div class="row">
-                <div class="col-4 text-right">
-                    @await  Component.InvokeAsync("CartSummary")
+                <div class="col-md-2">
+                    <div class="logo">CarService</div>
                 </div>
-
+                <div class="col-md-5">
+                    <div class="navigation">
+                        <a asp-area="" asp-controller="Forum" asp-action="Index" class="navigation-link">CarServise</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            @if (User.IsInRole("Admins"))
+                            {
+                                <a class="dropdown">
+                                    <a href="#" class="dropdown-toggle navigation-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Настройки<span class="caret"></span></a>
+                                    <ul class="dropdown-menu navigation-link">
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header navigation-link">Админ</li>
+                                        <li><a class="navigation-link" asp-controller="Forum" asp-action="Create">Редактировать Форум</a></li>
+                                        <li><a class="navigation-link" asp-controller="Profile" asp-action="Index">Пользователи</a></li>
+                                        <li><a class="navigation-link" asp-controller="Order" asp-action="List">Заказы</a></li>
+                                    </ul>
+                                </a>
+                            }
+                        }
+                        <a href="#" class="navigation-link">About</a>
+                    </div>    
+                </div>
+                <div class="col-md-4">
+                    <div class="login">
+                        @await Html.PartialAsync("_LoginPartial")
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="cart">
+                        @await Component.InvokeAsync("CartSummary")
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>              
     </nav>
     <div class="container body-content">
         @RenderBody()
