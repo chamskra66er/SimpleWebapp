@@ -20,6 +20,7 @@
 .navigation{
     font-size:18px;
     font-weight:400;
+    padding-top: 7px;
 }
 .navigation-link{
     font-family:'Roboto Mono';
@@ -27,6 +28,11 @@
     text-decoration:none;
     margin-right:20px;
 }
+.navigation-link:hover, .navigation-link:active, .navigation-link:focus {
+    color: #ff6a00;
+    text-decoration: none;
+}
+
 .drop-link {
     font-family: 'Roboto Mono';
     color: #52575D;

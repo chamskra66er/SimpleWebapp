@@ -1,5 +1,5 @@
 ﻿@model CarServise.Models.CartViewModels.Cart
-<div class="">
+<a class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index">
     @if (Model.Lines.Count() > 0)
     {
         <small class="navbar-text">
@@ -8,9 +8,4 @@
             @Model.ComputerTotalValue().ToString("c")
         </small>
     }
-    <a class="btn btn-sm btn-secondary navbar-btn"
-       asp-controller="Cart" asp-action="Index">
-        Cart
-    </a>
-</div>
-@*asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"*@ 
+</a>
