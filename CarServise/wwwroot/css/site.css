@@ -10,10 +10,12 @@
     background-color: #808080;
     padding: 15px;
 }
-.logo{
-    font-size:22px;
-    color:#041122;
-    font-weight:600;
+.logo {
+    background-image: url(/images/app-logo.png);
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .navigation{
     font-size:18px;
