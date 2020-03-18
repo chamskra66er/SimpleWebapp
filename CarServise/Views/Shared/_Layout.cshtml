@@ -31,7 +31,7 @@
             <div class="row">
                 <a class="col-md-2 logo" href="#">
                 </a>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="navigation">
                         <a asp-area="" asp-controller="Forum" asp-action="Index" class="navigation-link">CarServise</a>
                         @if (SignInManager.IsSignedIn(User))
@@ -62,14 +62,14 @@
                         }
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
                                 <a asp-controller="Manage" asp-action="Index" title="Manage">Привет, @UserManager.GetUserName(User)!</a>
-                                <button type="submit" class="btn btn-link navbar-btn navbar-link">Выйти</button>
+                                <button type="submit" class="btn">Выйти</button>
                             </form>
                         }
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <div class="cart">
                         @await Component.InvokeAsync("CartSummary")
                     </div>

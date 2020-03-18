@@ -107,6 +107,7 @@ namespace CarServise.Controllers
             };         
             return View(model);
         }
+        [Authorize(Roles ="Admins")]
         public IActionResult Create()
         {
             var model = new AddForumModel();
@@ -198,16 +199,22 @@ namespace CarServise.Controllers
         [HttpPost]        
         public IActionResult Report(ReportModel model)
         {
+            var dateFinish=model.Finish;
             var userId = _userManager.GetUserId(User);
             var user = _userManager.FindByIdAsync(userId).Result;
 
             XLWorkbook workbook = new XLWorkbook();
             IXLWorksheet worksheet = workbook.Worksheets.Add("Information");
 
+            if (model.Finish==null)
+            {
+                dateFinish = DateTime.Now;
+            }
+
             worksheet.Cell(1, 1).SetValue(model.FIO);
             worksheet.Cell(1, 2).SetValue(model.Pat);
             worksheet.Cell(1, 3).SetValue(model.Val);
-            worksheet.Cell(1, 4).SetValue(model.Finish);
+            worksheet.Cell(1, 4).SetValue(dateFinish);
 
             MemoryStream MS = new MemoryStream();
             workbook.SaveAs(MS);

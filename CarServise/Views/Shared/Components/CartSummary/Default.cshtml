@@ -2,10 +2,9 @@
 <a class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index">
     @if (Model.Lines.Count() > 0)
     {
+        <br/>
         <small class="navbar-text">
-            <b>Your cart:</b>
-            @Model.Lines.Sum(x => x.Quantity) item(s)
-            @Model.ComputerTotalValue().ToString("c")
+            @Model.Lines.Sum(x => x.Quantity) шт. - @Model.ComputerTotalValue().ToString("c")
         </small>
     }
 </a>
